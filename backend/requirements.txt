@@ -9,7 +9,7 @@ pydantic==2.4.2
 redis==5.0.1
 
 # LLM et RAG
-langchain==0.1.0
+langchain==0.2.6
 langchain-community==0.2.6
 chromadb==0.4.22
 sentence-transformers==2.2.2
