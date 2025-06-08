@@ -2,11 +2,15 @@ from fastapi import FastAPI, HTTPException, BackgroundTasks
 from fastapi.middleware.cors import CORSMiddleware
 from pydantic import BaseModel
 import os
+import sys
 from dotenv import load_dotenv
 import logging
 import time
 from typing import Optional, List, Dict
 import asyncio
+
+# Ajouter le dossier actuel au path Python
+sys.path.append(os.path.dirname(os.path.abspath(__file__)))
 
 # Import des modules custom
 from cache import init_cache, CacheManager
