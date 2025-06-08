@@ -7,7 +7,7 @@
 ## 🚀 Démarrage rapide
 
 ```bash
-git clone https://github.com/Volgine/Railway-Versel-Deploiment-Cloud-BOT-ARCHI-URBA.git
+git clone https://github.com/POC-FastAPI-simulationPIP-SOGEFI-Railway-Versel-Deploiement-Cloud-BOT-ARCHI-URBA.git
 cd Railway-Versel-Deploiment-Cloud-BOT-ARCHI-URBA
 ▶️ Lancer en local
 bash
@@ -100,7 +100,7 @@ const API_URL = 'https://archibottest2-production.up.railway.app';
  Déploiement Railway + Vercel validé
 
 📎 Lien GitHub
-🔗 https://github.com/Volgine/Railway-Versel-Deploiment-Cloud-BOT-ARCHI-URBA
+🔗 https://github.com/Volgine/POC-FastAPI-simulationPIP-SOGEFI-Railway-Versel-Deploiement-Cloud-BOT-ARCHI-URBA
 
 🧪 Tests et debug
 Utilise curl ou Postman pour tester POST /ask
