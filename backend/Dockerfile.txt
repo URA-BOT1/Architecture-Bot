@@ -1,21 +1,22 @@
 FROM python:3.11-slim
 
+# Définir le répertoire de travail
 WORKDIR /app
 
-# Installation des dépendances système
-RUN apt-get update && apt-get install -y \
-    gcc \
-    && rm -rf /var/lib/apt/lists/*
+# IMPORTANT : Ajouter le répertoire au PYTHONPATH
+ENV PYTHONPATH=/app
 
-# Copie des requirements et installation
+# Copier les requirements
 COPY requirements.txt .
+
+# Installer les dépendances
 RUN pip install --no-cache-dir -r requirements.txt
 
-# Copie du code
+# Copier tout le code
 COPY . .
 
-# Exposition du port
-EXPOSE 8000
+# Exposer le port
+EXPOSE ${PORT}
 
 # Commande de démarrage
-CMD ["uvicorn", "main:app", "--host", "0.0.0.0", "--port", "8000"]
+CMD ["uvicorn", "main:app", "--host", "0.0.0.0", "--port", "${PORT}"]
