@@ -7,7 +7,7 @@
 ## 🚀 Démarrage rapide
 
 ```bash
-git clone https://github.com/POC-FastAPI-simulationPIP-SOGEFI-Railway-Versel-Deploiement-Cloud-BOT-ARCHI-URBA.git
+git clone https://github.com/Volgine/urbanisme-bot.git
 cd Railway-Versel-Deploiment-Cloud-BOT-ARCHI-URBA
 ▶️ Lancer en local
 bash
