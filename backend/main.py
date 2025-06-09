@@ -14,11 +14,11 @@ import time
 from typing import Optional, List, Dict
 import asyncio
 
-# Import des modules custom
-from backend.cache import init_cache, CacheManager
-from backend.api_mock import init_mock_api, MockUrbanismAPI
-from backend.llm import init_llm, LocalLLM
-from backend.rag import init_rag, RAGSystem
+# Import des modules custom - SANS le préfixe "backend."
+from cache import init_cache, CacheManager
+from api_mock import init_mock_api, MockUrbanismAPI
+from llm import init_llm, LocalLLM
+from rag import init_rag, RAGSystem
 
 # Configuration
 load_dotenv()
@@ -34,6 +34,7 @@ app.add_middleware(
     allow_origins=["*"],  # En production, spécifier les domaines autorisés
     allow_methods=["*"],
     allow_headers=["*"],
+)
 )
 
 # Instances globales
