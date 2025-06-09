@@ -1,4 +1,4 @@
-dockerfileFROM python:3.11-slim
+FROM python:3.11-slim
 
 # Définir le répertoire de travail
 WORKDIR /app
@@ -19,4 +19,4 @@ COPY . .
 EXPOSE ${PORT}
 
 # Commande de démarrage
-CMD ["uvicorn", "main:app", "--host", "0.0.0.0", "--port", "${PORT}"]
+CMD ["uvicorn", "main:app", "--host", "0.0.0.0", "--port", "8080"]
