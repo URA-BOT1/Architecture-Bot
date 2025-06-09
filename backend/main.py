@@ -14,7 +14,7 @@ import time
 from typing import Optional, List, Dict
 import asyncio
 
-# Import des modules custom - SANS le préfixe "backend."
+# Import des modules custom
 from cache import init_cache, CacheManager
 from api_mock import init_mock_api, MockUrbanismAPI
 from llm import init_llm, LocalLLM
