@@ -18,7 +18,7 @@ torch==2.2.0
 accelerate==0.25.0
 
 # Traitement documents
-pypdf2==3.0.1
+PyPDF2==3.0.1
 pdfplumber==0.10.3
 
 # Utils
