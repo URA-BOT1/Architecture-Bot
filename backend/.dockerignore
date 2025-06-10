@@ -1,0 +1,23 @@
+# Ignore git metadata
+.git
+.gitignore
+
+# Ignore tests
+**/tests
+
+# Bytecode and cache
+__pycache__/
+*.py[cod]
+.mypy_cache/
+.pytest_cache/
+
+# Ignore local environment and configs
+.env
+*.env
+*.log
+
+# Ignore other development files
+*.md
+.vscode/
+.idea/
+env.example.txt
