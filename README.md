@@ -38,10 +38,11 @@ Le dossier `frontend/` est un site statique. Sur [Vercel](https://vercel.com) 
 
 ## Tests
 
-Un script de charge est disponible :
+Pour exécuter le script de charge localement :
 
 ```bash
+pip install -r requirements.txt
 pytest -q
 ```
 
-Cela lancera `tests/test_load.py` pour simuler des requêtes sur l'API (les dépendances doivent être installées).
+Cela lancera `tests/test_load.py` pour simuler des requêtes sur l'API.
