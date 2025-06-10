@@ -2,6 +2,7 @@ import asyncio
 import httpx
 import time
 import statistics
+import pytest
 
 async def run_endpoint_test(client, i):
     """Test une requête unique et retourne le temps de réponse"""
@@ -63,6 +64,7 @@ async def stress_test():
         await load_test(num_requests)
         await asyncio.sleep(2)  # Pause entre les tests
 
+@pytest.mark.asyncio
 async def test_cache():
     """Test spécifique du cache"""
     print("\n🔄 Test du cache\n")
