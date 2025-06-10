@@ -40,3 +40,4 @@ docker-compose.local.yml
 
 # Others
 *.sqlite3
+frontend/config.js
