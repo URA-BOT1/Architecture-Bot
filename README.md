@@ -13,6 +13,8 @@ Il comporte deux parties :
 # Nécessite Docker
  docker-compose up --build
 ```
+Si vous modifiez le `Dockerfile`, relancez la commande avec `--build` pour
+reconstruire l'image du backend.
 
 Le backend sera disponible sur `http://localhost:8000` et le frontend sur `http://localhost:3000`.
 
