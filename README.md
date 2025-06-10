@@ -22,7 +22,7 @@ Le backend sera disponible sur `http://localhost:8000` et le frontend sur `http:
 
 1. Créez un compte sur [Railway](https://railway.app) et connectez votre compte GitHub.
 2. Depuis le tableau de bord Railway, cliquez sur **New Project** puis **Deploy from GitHub repo** et sélectionnez ce dépôt.
-3. Dans les options d'import, indiquez `backend` comme **Root Directory** pour que Railway utilise le `Dockerfile`.
+3. Dans les options d'import, indiquez **obligatoirement** `backend` comme **Root Directory** pour que Railway installe les dépendances du backend et utilise le `Dockerfile`. Sans ce paramètre, le déploiement échouera car Railway ne prendra que `requirements.txt` à la racine.
 4. Railway détecte alors le `Dockerfile` et construit l'image automatiquement.
 5. Ajoutez si besoin les variables d'environnement (ex. `REDIS_HOST`, `REDIS_PORT`).
    La variable `PORT` vaut `8000` par défaut mais Railway la remplacera automatiquement.
