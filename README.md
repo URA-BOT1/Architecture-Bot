@@ -61,4 +61,7 @@ pip install -r requirements.txt
 pytest -q
 ```
 
+Le fichier `requirements.txt` fournit notamment `pytest` et
+`pytest-asyncio`, nécessaires pour exécuter les tests asynchrones.
+
 Cela lancera `tests/test_load.py` pour simuler des requêtes sur l'API.
