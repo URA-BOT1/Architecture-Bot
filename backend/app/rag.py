@@ -12,7 +12,7 @@ from langchain.chains import RetrievalQA
 from langchain.retrievers import ContextualCompressionRetriever
 from langchain.retrievers.document_compressors import LLMChainFilter
 
-import PypPDF2
+import PyPDF2
 import pdfplumber
 
 logger = logging.getLogger(__name__)
