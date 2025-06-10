@@ -6,6 +6,8 @@ WORKDIR /app
 # IMPORTANT : Ajouter le répertoire au PYTHONPATH
 ENV PYTHONPATH=/app
 ENV PORT=8000
+ENV PYTHONDONTWRITEBYTECODE=1
+ENV PYTHONUNBUFFERED=1
 
 # Copier les requirements
 COPY requirements.txt .
