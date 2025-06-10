@@ -1,9 +1,4 @@
-import sys
 import os
-
-# Configuration du path AVANT tous les autres imports
-current_dir = os.path.dirname(os.path.abspath(__file__))
-sys.path.insert(0, current_dir)
 
 from fastapi import FastAPI, HTTPException, BackgroundTasks
 from fastapi.middleware.cors import CORSMiddleware
@@ -15,10 +10,10 @@ from typing import Optional, List, Dict
 import asyncio
 
 # Import des modules custom
-from cache import init_cache, CacheManager
-from api_mock import init_mock_api, MockUrbanismAPI
-from llm import init_llm, LocalLLM
-from rag import init_rag, RAGSystem
+from app.cache import init_cache, CacheManager
+from app.api_mock import init_mock_api, MockUrbanismAPI
+from app.llm import init_llm, LocalLLM
+from app.rag import init_rag, RAGSystem
 
 # Configuration
 load_dotenv()
