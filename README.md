@@ -20,9 +20,10 @@ Le backend sera disponible sur `http://localhost:8000` et le frontend sur `http:
 
 1. Créez un compte sur [Railway](https://railway.app) et connectez votre compte GitHub.
 2. Depuis le tableau de bord Railway, cliquez sur **New Project** puis **Deploy from GitHub repo** et sélectionnez ce dépôt.
-3. Railway détecte le `Dockerfile` dans `backend/` et construit l'image automatiquement.
-4. Ajoutez si besoin les variables d'environnement (ex. `REDIS_HOST`, `REDIS_PORT`).
-5. Lancez le déploiement : Railway exécutera `uvicorn app.main:app --host 0.0.0.0 --port $PORT` comme défini dans le `Dockerfile`.
+3. Dans les options d'import, indiquez `backend` comme **Root Directory** pour que Railway utilise le `Dockerfile`.
+4. Railway détecte alors le `Dockerfile` et construit l'image automatiquement.
+5. Ajoutez si besoin les variables d'environnement (ex. `REDIS_HOST`, `REDIS_PORT`).
+6. Lancez le déploiement : Railway exécutera `uvicorn app.main:app --host 0.0.0.0 --port $PORT` comme défini dans le `Dockerfile`.
 
 Une URL publique est alors fournie pour accéder à l'API.
 
@@ -31,11 +32,12 @@ Une URL publique est alors fournie pour accéder à l'API.
 Le dossier `frontend/` est un site statique. Sur [Vercel](https://vercel.com) :
 
 1. Importez ce dépôt GitHub comme nouveau projet.
-2. Gardez les paramètres par défaut, Vercel détectera `vercel.json` et servira directement `index.html` et `app.js`.
+2. Lors de l'import, définissez `frontend` comme **Root Directory**.
+3. Gardez ensuite les autres paramètres par défaut : Vercel détectera `vercel.json` et servira directement `index.html` et `app.js`.
 
 ## Tests
 
-Un script de charge est disponible :
+Un script de charge est disponible :
 
 ```bash
 pytest -q
