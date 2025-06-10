@@ -20,4 +20,4 @@ __pycache__/
 *.md
 .vscode/
 .idea/
-env.example.txt
+.env.example
