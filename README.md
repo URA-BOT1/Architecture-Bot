@@ -17,6 +17,7 @@ Si vous modifiez le `Dockerfile`, relancez la commande avec `--build` pour
 reconstruire l'image du backend.
 
 Le backend sera disponible sur `http://localhost:8000` et le frontend sur `http://localhost:3000`.
+Pour déployer le frontend ailleurs, copiez `frontend/config.js.example` en `frontend/config.js` et indiquez l'URL publique de l'API.
 
 ### Développement sans Docker
 
@@ -48,7 +49,8 @@ Le dossier `frontend/` est un site statique. Sur [Vercel](https://vercel.com) 
 
 1. Importez ce dépôt GitHub comme nouveau projet.
 2. Lors de l'import, définissez `frontend` comme **Root Directory**.
-3. Gardez ensuite les autres paramètres par défaut : Vercel détectera `vercel.json` et servira directement `index.html` et `app.js`.
+3. Copiez `frontend/config.js.example` en `frontend/config.js` et indiquez l'URL publique de votre backend.
+4. Gardez ensuite les autres paramètres par défaut : Vercel détectera `vercel.json` et servira directement `index.html`, `config.js` et `app.js`.
 
 ## Tests
 

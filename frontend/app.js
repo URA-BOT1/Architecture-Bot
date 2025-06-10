@@ -1,7 +1,10 @@
 // Configuration
-const API_URL = window.location.hostname === 'localhost' 
-    ? 'http://localhost:8000' 
-    : 'https://your-app.up.railway.app'; // TODO: Remplacer par votre URL Railway
+// API_URL peut être défini dans config.js
+const API_URL = window.API_URL || (
+    window.location.hostname === 'localhost'
+        ? 'http://localhost:8000'
+        : ''
+);
 
 // État de l'application
 let isLoading = false;
