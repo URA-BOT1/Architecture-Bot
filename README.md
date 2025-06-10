@@ -27,6 +27,16 @@ Pour lancer le backend directement, installez les dépendances Python :
 pip install -r backend/requirements.txt
 ```
 
+### Notes
+
+* Le port par défaut de Redis est `6379`. Si vous rencontrez un souci de connexion,
+  vérifiez la variable `REDIS_PORT` dans votre fichier `.env`.
+* Le système RAG repose sur la librairie `sentence-transformers`.
+  Assurez-vous que cette dépendance est bien installée.
+* Certains modèles de LLM (comme Llama 2) nécessitent un token Hugging Face pour
+  être téléchargés. Renseignez la variable `HF_TOKEN` ou connectez-vous via
+  `huggingface-cli login`.
+
 Redis doit être démarré (par exemple via `docker-compose` ou un serveur local).
 Les variables `REDIS_HOST` et `REDIS_PORT` peuvent être ajustées dans un fichier
 `.env` copié depuis `backend/.env.example`.
