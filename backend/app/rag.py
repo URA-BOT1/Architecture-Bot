@@ -12,7 +12,7 @@ from langchain.chains import RetrievalQA
 from langchain.retrievers import ContextualCompressionRetriever
 from langchain.retrievers.document_compressors import LLMChainFilter
 
-import pypdf2
+import PyPDF2
 import pdfplumber
 
 logger = logging.getLogger(__name__)
@@ -127,7 +127,7 @@ class RAGSystem:
                 if not text.strip():
                     # Fallback sur PyPDF2
                     with open(file_path, "rb") as f:
-                        reader = pypdf2.PdfReader(f)
+                        reader = PyPDF2.PdfReader(f)
                         text = ""
                         for page in reader.pages:
                             text += page.extract_text()
