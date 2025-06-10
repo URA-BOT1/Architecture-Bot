@@ -5,6 +5,7 @@ WORKDIR /app
 
 # IMPORTANT : Ajouter le répertoire au PYTHONPATH
 ENV PYTHONPATH=/app
+ENV PORT=8000
 
 # Copier les requirements
 COPY requirements.txt .
@@ -16,7 +17,7 @@ RUN pip install --no-cache-dir -r requirements.txt
 COPY . .
 
 # Exposition du port
-EXPOSE $PORT
+EXPOSE 8000
 
 # Commande de démarrage
 CMD ["uvicorn", "app.main:app", "--host", "0.0.0.0", "--port", "$PORT"]
