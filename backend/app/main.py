@@ -58,7 +58,7 @@ class QueryResponse(BaseModel):
     sources: List[Dict] = []
     cached: bool = False
     processing_time: float
-    model_used: Optional[str] = None
+    model: Optional[str] = None
 
 class StatsResponse(BaseModel):
     total_queries: int
@@ -205,7 +205,7 @@ async def query_urbanisme(request: QueryRequest):
             "sources": [],
             "cached": False,
             "processing_time": time.time() - start_time,
-            "model_used": "fallback"
+            "model": "fallback"
         }
         
         return QueryResponse(**response_data)
