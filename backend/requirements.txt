@@ -1,12 +1,14 @@
 # FastAPI et serveur
 fastapi==0.104.1
-uvicorn==0.24.0
+uvicorn[standard]==0.24.0.post1
 httpx==0.25.0
 python-dotenv==1.0.0
 pydantic==2.4.2
+python-multipart==0.0.6
 
 # Cache
 redis==5.0.1
+hiredis==2.2.3
 
 # LLM et RAG
 langchain==0.2.6
@@ -16,11 +18,13 @@ sentence-transformers==2.2.2
 transformers==4.36.0
 torch==2.2.0
 accelerate==0.25.0
+bitsandbytes==0.41.3
 
 # Traitement documents
-PyPDF2==3.0.1
+pypdf2==3.0.1
 pdfplumber==0.10.3
 
 # Utils
 numpy==1.26.0
 tqdm==4.66.1
+aiofiles==23.2.1
