@@ -13,13 +13,12 @@ hiredis==2.2.3
 # LLM et RAG
 langchain==0.2.6
 langchain-community==0.2.6
-langchain-huggingface==0.0.6
 chromadb==0.4.22
 sentence-transformers==2.2.2
 transformers==4.36.0
 torch==2.2.0
 accelerate==0.25.0
-bitsandbytes==0.41.3
+# bitsandbytes==0.41.3  # Optionnel, seulement si GPU disponible
 
 # Traitement documents
 pypdf2==3.0.1
