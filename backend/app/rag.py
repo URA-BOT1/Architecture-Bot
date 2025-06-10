@@ -5,14 +5,14 @@ from pathlib import Path
 import hashlib
 
 from langchain.text_splitter import RecursiveCharacterTextSplitter
-from langchain_huggingface.embeddings import HuggingFaceEmbeddings
+from langchain_community.embeddings import HuggingFaceEmbeddings
 from langchain_community.vectorstores import Chroma
 from langchain.schema import Document
 from langchain.chains import RetrievalQA
 from langchain.retrievers import ContextualCompressionRetriever
 from langchain.retrievers.document_compressors import LLMChainFilter
 
-import PyPDF2
+import PypPDF2
 import pdfplumber
 
 logger = logging.getLogger(__name__)
