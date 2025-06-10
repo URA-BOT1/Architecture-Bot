@@ -18,6 +18,18 @@ reconstruire l'image du backend.
 
 Le backend sera disponible sur `http://localhost:8000` et le frontend sur `http://localhost:3000`.
 
+### Développement sans Docker
+
+Pour lancer le backend directement, installez les dépendances Python :
+
+```bash
+pip install -r backend/requirements.txt
+```
+
+Redis doit être démarré (par exemple via `docker-compose` ou un serveur local).
+Les variables `REDIS_HOST` et `REDIS_PORT` peuvent être ajustées dans un fichier
+`.env` copié depuis `backend/.env.example`.
+
 ## Déploiement sur Railway
 
 1. Créez un compte sur [Railway](https://railway.app) et connectez votre compte GitHub.
