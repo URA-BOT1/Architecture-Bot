@@ -8,7 +8,7 @@ from transformers import (
     BitsAndBytesConfig
 )
 import torch
-from langchain.llms import HuggingFacePipeline
+from langchain_community.llms import HuggingFacePipeline
 from langchain.prompts import PromptTemplate
 from langchain.schema import Document
 
