@@ -23,6 +23,7 @@ Le backend sera disponible sur `http://localhost:8000` et le frontend sur `http:
 3. Dans les options d'import, indiquez `backend` comme **Root Directory** pour que Railway utilise le `Dockerfile`.
 4. Railway détecte alors le `Dockerfile` et construit l'image automatiquement.
 5. Ajoutez si besoin les variables d'environnement (ex. `REDIS_HOST`, `REDIS_PORT`).
+   La variable `PORT` vaut `8000` par défaut mais Railway la remplacera automatiquement.
 6. Lancez le déploiement : Railway exécutera `uvicorn app.main:app --host 0.0.0.0 --port $PORT` comme défini dans le `Dockerfile`.
 
 Une URL publique est alors fournie pour accéder à l'API.
