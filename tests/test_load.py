@@ -3,7 +3,7 @@ import httpx
 import time
 import statistics
 
-async def test_endpoint(client, i):
+async def run_endpoint_test(client, i):
     """Test une requête unique et retourne le temps de réponse"""
     start = time.time()
     try:
@@ -26,11 +26,11 @@ async def load_test(num_requests=50):
     async with httpx.AsyncClient(timeout=30.0) as client:
         # Warmup
         print("⏳ Warmup...")
-        await test_endpoint(client, 0)
+        await run_endpoint_test(client, 0)
         
         # Test concurrent
         print("🔥 Test en cours...")
-        tasks = [test_endpoint(client, i) for i in range(num_requests)]
+        tasks = [run_endpoint_test(client, i) for i in range(num_requests)]
         results = await asyncio.gather(*tasks)
         
         # Analyse des résultats
