@@ -75,3 +75,15 @@ Le fichier `requirements.txt` fournit notamment `pytest` et
 `pytest-asyncio`, nécessaires pour exécuter les tests asynchrones.
 
 Cela lancera `tests/test_load.py` pour simuler des requêtes sur l'API.
+
+## Git Flow
+
+Un script `gitflow-setup.sh` est fourni pour initialiser rapidement la structure Git Flow.
+Après installation de l'outil `git-flow`, lancez :
+
+```bash
+chmod +x gitflow-setup.sh
+./gitflow-setup.sh
+```
+
+Des exemples détaillés d'utilisation se trouvent dans `gitflow-commands-examples.sh`.
