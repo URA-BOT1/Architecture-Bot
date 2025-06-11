@@ -40,6 +40,7 @@ def import_cache(monkeypatch):
         sys.path.insert(0, str(root))
     fake_module = types.ModuleType('redis')
     fake_module.Redis = DummyRedis
+    fake_module.from_url = lambda url, **kwargs: DummyRedis()
     monkeypatch.setitem(sys.modules, 'redis', fake_module)
     return importlib.import_module('backend.app.cache')
 
@@ -52,6 +53,13 @@ def test_set_and_get(cache):
     key = cache.generate_key('question', 'ctx')
     assert cache.set(key, {'a': 1})
     assert cache.get(key) == {'a': 1}
+
+def test_init_with_url(monkeypatch):
+    cache_module = import_cache(monkeypatch)
+    cm = cache_module.CacheManager(url='redis://localhost:6379/0')
+    key = cm.generate_key('x')
+    assert cm.set(key, {'b': 2})
+    assert cm.get(key) == {'b': 2}
 
 def test_delete_and_stats(cache):
     k1 = cache.generate_key('q1')

@@ -30,16 +30,19 @@ pip install -r backend/requirements.txt
 ### Notes
 
 * Le port par défaut de Redis est `6379`. Si vous rencontrez un souci de connexion,
-  vérifiez la variable `REDIS_PORT` dans votre fichier `.env`.
+  vérifiez la variable `REDIS_PORT` dans votre fichier `.env`. Vous pouvez
+  également définir une URL complète via `REDIS_URL` (par ex.
+  `redis://user:pass@host:port/0`).
 * Le système RAG repose sur la librairie `sentence-transformers`.
   Assurez-vous que cette dépendance est bien installée.
-* Certains modèles de LLM (comme Llama 2) nécessitent un token Hugging Face pour
-  être téléchargés. Renseignez la variable `HF_TOKEN` ou connectez-vous via
+* Certains modèles de LLM (comme Llama 2 ou Mistral) nécessitent un token
+  Hugging Face pour être téléchargés. Renseignez la variable `HF_TOKEN` (lue
+  automatiquement par l'application) ou connectez-vous via
   `huggingface-cli login`.
 
 Redis doit être démarré (par exemple via `docker-compose` ou un serveur local).
-Les variables `REDIS_HOST` et `REDIS_PORT` peuvent être ajustées dans un fichier
-`.env` copié depuis `backend/.env.example`.
+Les variables `REDIS_HOST`/`REDIS_PORT` ou `REDIS_URL` peuvent être ajustées
+dans un fichier `.env` copié depuis `backend/.env.example`.
 
 ## Déploiement sur Railway
 
@@ -47,7 +50,7 @@ Les variables `REDIS_HOST` et `REDIS_PORT` peuvent être ajustées dans un fichi
 2. Depuis le tableau de bord Railway, cliquez sur **New Project** puis **Deploy from GitHub repo** et sélectionnez ce dépôt.
 3. Dans les options d'import, indiquez **obligatoirement** `backend` comme **Root Directory** pour que Railway installe les dépendances du backend et utilise le `Dockerfile`. Sans ce paramètre, le déploiement échouera car Railway ne prendra que `requirements.txt` à la racine.
 4. Railway détecte alors le `Dockerfile` et construit l'image automatiquement.
-5. Ajoutez si besoin les variables d'environnement (ex. `REDIS_HOST`, `REDIS_PORT`).
+5. Ajoutez si besoin les variables d'environnement (ex. `REDIS_HOST`, `REDIS_PORT` ou `REDIS_URL`).
    La variable `PORT` vaut `8000` par défaut mais Railway la remplacera automatiquement.
 6. Lancez le déploiement : Railway exécutera `uvicorn app.main:app --host 0.0.0.0 --port $PORT` comme défini dans le `Dockerfile`.
 
