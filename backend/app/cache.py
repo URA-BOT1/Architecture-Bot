@@ -10,8 +10,9 @@ logger = logging.getLogger(__name__)
 class CacheManager:
     """Gestionnaire de cache Redis pour l'assistant urbanisme"""
     
-    def __init__(self, host: str = "localhost", port: int = 6379, 
-                 password: Optional[str] = None, db: int = 0):
+    def __init__(self, host: str = "localhost", port: int = 6379,
+                 password: Optional[str] = None, db: int = 0,
+                 url: Optional[str] = None):
         """
         Initialise la connexion Redis
         
@@ -23,13 +24,24 @@ class CacheManager:
         """
         self.enabled = True
         try:
-            self.redis_client = redis.Redis(
-                host=host,
-                port=port,
-                password=password,
-                db=db,
-                decode_responses=True
-            )
+            if url:
+                # Priorité à l'URL complète si fournie
+                if hasattr(redis, "from_url"):
+                    self.redis_client = redis.from_url(
+                        url, decode_responses=True
+                    )
+                else:
+                    self.redis_client = redis.Redis.from_url(
+                        url, decode_responses=True
+                    )
+            else:
+                self.redis_client = redis.Redis(
+                    host=host,
+                    port=port,
+                    password=password,
+                    db=db,
+                    decode_responses=True
+                )
             # Test de connexion
             self.redis_client.ping()
             logger.info("✅ Redis connecté - Cache activé")
@@ -198,8 +210,9 @@ class CacheManager:
 # Instance globale (optionnel, peut être créé dans main.py)
 cache_manager = None
 
-def init_cache(host: str = "localhost", port: int = 6379, 
-               password: Optional[str] = None) -> CacheManager:
+def init_cache(host: str = "localhost", port: int = 6379,
+               password: Optional[str] = None,
+               url: Optional[str] = None) -> CacheManager:
     """
     Initialise le gestionnaire de cache global
     
@@ -207,5 +220,5 @@ def init_cache(host: str = "localhost", port: int = 6379,
         Instance du gestionnaire de cache
     """
     global cache_manager
-    cache_manager = CacheManager(host, port, password)
+    cache_manager = CacheManager(host, port, password, url=url)
     return cache_manager

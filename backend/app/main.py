@@ -85,7 +85,8 @@ async def initialize_services():
         cache = init_cache(
             host=os.getenv('REDIS_HOST', 'localhost'),
             port=int(os.getenv('REDIS_PORT', 6379)),
-            password=os.getenv('REDIS_PASSWORD')
+            password=os.getenv('REDIS_PASSWORD'),
+            url=os.getenv('REDIS_URL')
         )
         initialization_status["cache"] = True
     except Exception as e:

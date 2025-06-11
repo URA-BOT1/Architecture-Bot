@@ -91,10 +91,13 @@ Réponse:"""
                     bnb_4bit_quant_type="nf4"
                 )
             
+            hf_token = os.getenv("HF_TOKEN")
+
             # Charger le tokenizer
             self.tokenizer = AutoTokenizer.from_pretrained(
                 self.model_name,
-                trust_remote_code=True
+                trust_remote_code=True,
+                token=hf_token
             )
             
             # Ajouter un pad token si nécessaire
@@ -108,7 +111,8 @@ Réponse:"""
                     quantization_config=bnb_config,
                     device_map="auto",
                     trust_remote_code=True,
-                    torch_dtype=torch.float16
+                    torch_dtype=torch.float16,
+                    token=hf_token
                 )
             else:
                 # CPU mode
@@ -116,7 +120,8 @@ Réponse:"""
                     self.model_name,
                     torch_dtype=torch.float32,
                     low_cpu_mem_usage=True,
-                    trust_remote_code=True
+                    trust_remote_code=True,
+                    token=hf_token
                 )
             
             # Créer le pipeline
