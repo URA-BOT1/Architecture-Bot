@@ -87,3 +87,5 @@ chmod +x gitflow-setup.sh
 ```
 
 Des exemples détaillés d'utilisation se trouvent dans `gitflow-commands-examples.sh`.
+Ce petit script liste les commandes Git Flow courantes (init, features, releases,
+hotfixes) et montre comment afficher les branches actives.
