@@ -112,6 +112,12 @@ Ce script installe également les paquets système `tesseract-ocr` et
 `poppler-utils` nécessaires à l'OCR utilisé par `pdf2image` et
 `pytesseract`.
 
+Pour indexer vos documents :
+
+```bash
+python src/ingestion/index_documents.py data/
+```
+
 Après indexation des documents :
 
 ```bash
