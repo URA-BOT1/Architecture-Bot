@@ -1,89 +1,16 @@
-# Assistant Urbanisme
+Architecture-Bot
+Architecture-Bot est un chatbot basé sur l’architecture RAG (Retrieval-Augmented Generation) permettant de répondre à des questions en s’appuyant sur une base de connaissance spécifique. Le projet utilise un pipeline combinant : (1) Claire-7B, un modèle de langage de 7 milliards de paramètres adapté aux dialogues en français:contentReference[oaicite:17]{index=17}, (2) ChromaDB, une base de données vectorielle open-source pour stocker et rechercher les embeddings des documents:contentReference[oaicite:18]{index=18}, et (3) Streamlit, un framework Python open-source pour créer rapidement des interfaces web interactives:contentReference[oaicite:19]{index=19}.
 
-Ce projet propose un exemple simple d'assistant d'urbanisme basé sur un RAG (Retrieval Augmented Generation) et un LLM local.
-Il comporte deux parties :
+Pipeline de réponse (RAG)
+Indexation des documents : les documents de référence sont transformés en vecteurs (embeddings) et stockés dans ChromaDB.
+Recherche sémantique : pour chaque question posée, on calcule son embedding et on interroge ChromaDB afin d’identifier les passages pertinents.
+Génération de réponse : les passages récupérés sont concaténés et passés en contexte à Claire-7B. Le modèle génère alors une réponse textuelle informée.
+Interface utilisateur : l’application Streamlit fournit une interface web où l’utilisateur pose ses questions et reçoit les réponses générées.
+Ce pipeline RAG associe la capacité de récupération de données (ChromaDB) aux performances d’un LLM (Claire-7B) pour fournir des réponses contextuelles. Streamlit est utilisé pour rendre le tout accessible via un navigateur sans nécessiter de front-end complexe.
 
-* **backend/** – API FastAPI servant les réponses
-* **frontend/** – mini application HTML/JS interrogeant l'API
-* **tests/** – petit script de charge
+Installation et exécution
+Pour lancer Architecture-Bot localement :
 
-## Lancer en local
-
-```bash
-# Nécessite Docker
- docker-compose up --build
-```
-Si vous modifiez le `Dockerfile`, relancez la commande avec `--build` pour
-reconstruire l'image du backend.
-
-Le backend sera disponible sur `http://localhost:8000` et le frontend sur `http://localhost:3000`.
-Pour déployer le frontend ailleurs, copiez `frontend/config.js.example` en `frontend/config.js` et indiquez l'URL publique de l'API.
-
-### Développement sans Docker
-
-Pour lancer le backend directement, installez les dépendances Python :
-
-```bash
-pip install -r backend/requirements.txt
-```
-
-### Notes
-
-* Le port par défaut de Redis est `6379`. Si vous rencontrez un souci de connexion,
-  vérifiez la variable `REDIS_PORT` dans votre fichier `.env`.
-* Le système RAG repose sur la librairie `sentence-transformers`.
-  Assurez-vous que cette dépendance est bien installée.
-* Certains modèles de LLM (comme Llama 2) nécessitent un token Hugging Face pour
-  être téléchargés. Renseignez la variable `HF_TOKEN` ou connectez-vous via
-  `huggingface-cli login`.
-
-Redis doit être démarré (par exemple via `docker-compose` ou un serveur local).
-Les variables `REDIS_HOST` et `REDIS_PORT` peuvent être ajustées dans un fichier
-`.env` copié depuis `backend/.env.example`.
-
-## Déploiement sur Railway
-
-1. Créez un compte sur [Railway](https://railway.app) et connectez votre compte GitHub.
-2. Depuis le tableau de bord Railway, cliquez sur **New Project** puis **Deploy from GitHub repo** et sélectionnez ce dépôt.
-3. Dans les options d'import, indiquez **obligatoirement** `backend` comme **Root Directory** pour que Railway installe les dépendances du backend et utilise le `Dockerfile`. Sans ce paramètre, le déploiement échouera car Railway ne prendra que `requirements.txt` à la racine.
-4. Railway détecte alors le `Dockerfile` et construit l'image automatiquement.
-5. Ajoutez si besoin les variables d'environnement (ex. `REDIS_HOST`, `REDIS_PORT`).
-   La variable `PORT` vaut `8000` par défaut mais Railway la remplacera automatiquement.
-6. Lancez le déploiement : Railway exécutera `uvicorn app.main:app --host 0.0.0.0 --port $PORT` comme défini dans le `Dockerfile`.
-
-Une URL publique est alors fournie pour accéder à l'API.
-
-## Déploiement du frontend sur Vercel
-
-Le dossier `frontend/` est un site statique. Sur [Vercel](https://vercel.com) :
-
-1. Importez ce dépôt GitHub comme nouveau projet.
-2. Lors de l'import, définissez `frontend` comme **Root Directory**.
-3. Copiez `frontend/config.js.example` en `frontend/config.js` et indiquez l'URL publique de votre backend.
-4. Gardez ensuite les autres paramètres par défaut : Vercel détectera `vercel.json` et servira directement `index.html`, `config.js` et `app.js`.
-
-## Tests
-
-Pour exécuter le script de charge localement :
-
-```bash
-pip install -r requirements.txt
-pytest -q
-```
-
-Le fichier `requirements.txt` fournit notamment `pytest` et
-`pytest-asyncio`, nécessaires pour exécuter les tests asynchrones.
-
-Cela lancera `tests/test_load.py` pour simuler des requêtes sur l'API.
-
-## Git Flow
-
-Un script `gitflow-setup.sh` est fourni pour initialiser rapidement la structure Git Flow.
-Après installation de l'outil `git-flow`, lancez :
-
-```bash
-chmod +x gitflow-setup.sh
-./gitflow-setup.sh
-```
-
-Des exemples détaillés d'utilisation se trouvent dans `gitflow-commands-examples.sh`.
+Cloner le dépôt :
+git clone https://github.com/URA-BOT1/Architecture-Bot.git
+cd Architecture-Bot
