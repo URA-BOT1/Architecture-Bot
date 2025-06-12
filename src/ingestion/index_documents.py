@@ -13,13 +13,12 @@ def chunk_text(text: str, size: int = 1000, overlap: int = 200):
     step = size - overlap
     for start in range(0, len(text), step):
         yield text[start : start + size]
-        
+
+
 def index_directory(directory: str, persist_dir: str = "chroma_db"):
     """Walk ``directory`` and index all supported files into ChromaDB."""
-
-def index_directory(directory: str):
     embedder = Embedder()
-    store = ChromaManager()
+    store = ChromaManager(persist_dir)
 
     for root, _, files in os.walk(directory):
         for name in files:
@@ -38,7 +37,7 @@ def index_directory(directory: str):
             ids = [str(uuid4()) for _ in chunks]
             metadatas = [{"source": str(path), "chunk": i} for i in range(len(chunks))]
 
-             store.add(
+            store.add(
                 ids=ids,
                 texts=chunks,
                 embeddings=embeddings,
@@ -48,14 +47,13 @@ def index_directory(directory: str):
 
 def cli() -> None:
     """Entry point for the command line."""
-    
+
     parser = argparse.ArgumentParser(description="Index documents into ChromaDB")
     parser.add_argument("directory", help="Directory containing files to index")
-    def cli() -> None:
-    """Entry point for the command line."""
+    parser.add_argument("--persist_dir", default="chroma_db", help="ChromaDB directory")
     args = parser.parse_args()
 
-        index_directory(args.directory, args.persist_dir)
+    index_directory(args.directory, args.persist_dir)
 
 
 if __name__ == "__main__":
