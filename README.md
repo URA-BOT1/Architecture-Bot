@@ -109,6 +109,12 @@ Pour installer les dépendances système et Python :
 bash install.sh
 ```
 
+Pour indexer vos documents :
+
+```bash
+python src/ingestion/index_documents.py data/
+```
+
 Après indexation des documents :
 
 ```bash
