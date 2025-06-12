@@ -1,3 +1,16 @@
 httpx==0.25.0
 pytest==7.4.3
 pytest-asyncio==0.21.1
+
+# Libraries used by modules in src/
+llama-cpp-python
+streamlit
+chromadb==0.4.22
+sentence-transformers==2.2.2
+pandas
+openpyxl
+pdf2image
+pytesseract
+python-docx
+PyMuPDF
+torch==2.2.0
