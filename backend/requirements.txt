@@ -17,9 +17,7 @@ chromadb==0.4.22
 sentence-transformers==2.2.2
 llama-cpp-python
 streamlit
-transformers==4.36.0
 torch==2.2.0
-accelerate==0.25.0
 # bitsandbytes==0.41.3  # Optionnel, seulement si GPU disponible
 
 # Traitement documents

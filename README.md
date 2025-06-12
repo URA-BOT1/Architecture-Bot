@@ -1,21 +1,36 @@
 # Architecture-Bot
 
-Architecture-Bot est un chatbot basé sur l’architecture RAG (Retrieval-Augmented Generation) permettant de répondre à des questions en s’appuyant sur une base de connaissance spécifique. Le projet utilise un pipeline combinant : (1) **Claire-7B**, un modèle de langage de 7 milliards de paramètres adapté aux dialogues en français:contentReference[oaicite:17]{index=17}, (2) **ChromaDB**, une base de données vectorielle open-source pour stocker et rechercher les embeddings des documents:contentReference[oaicite:18]{index=18}, et (3) **Streamlit**, un framework Python open-source pour créer rapidement des interfaces web interactives:contentReference[oaicite:19]{index=19}.
+Architecture-Bot est un chatbot simple reposant sur l'architecture **RAG** (Retrieval‑Augmented Generation). Le projet utilise :
 
-## Pipeline de réponse (RAG)
+- **Claire‑7B** chargé localement via `llama-cpp-python` ;
+- **ChromaDB** pour la base de vecteurs ;
+- **Streamlit** pour l'interface Web.
 
-1. **Indexation des documents** : les documents de référence sont transformés en vecteurs (embeddings) et stockés dans ChromaDB.
-2. **Recherche sémantique** : pour chaque question posée, on calcule son embedding et on interroge ChromaDB afin d’identifier les passages pertinents.
-3. **Génération de réponse** : les passages récupérés sont concaténés et passés en contexte à Claire-7B. Le modèle génère alors une réponse textuelle informée.
-4. **Interface utilisateur** : l’application Streamlit fournit une interface web où l’utilisateur pose ses questions et reçoit les réponses générées.
+## Pipeline de réponse
 
-Ce pipeline RAG associe la capacité de récupération de données (ChromaDB) aux performances d’un LLM (Claire-7B) pour fournir des réponses contextuelles. Streamlit est utilisé pour rendre le tout accessible via un navigateur sans nécessiter de front-end complexe.
+1. **Indexation des documents** : les fichiers sources sont découpés puis convertis en embeddings et stockés dans Chroma.
+2. **Recherche sémantique** : pour chaque question, on récupère les passages pertinents à l'aide de Chroma.
+3. **Génération de la réponse** : ces passages sont passés en contexte à Claire‑7B pour produire la réponse.
+4. **Interface utilisateur** : Streamlit permet de dialoguer avec le modèle via le navigateur.
 
 ## Installation et exécution
 
-Pour lancer Architecture-Bot localement :
+```bash
+git clone https://github.com/URA-BOT1/Architecture-Bot.git
+cd Architecture-Bot
+pip install -r requirements.txt
+./run.sh
+```
 
-- Cloner le dépôt :  
-  ```bash
-  git clone https://github.com/URA-BOT1/Architecture-Bot.git
-  cd Architecture-Bot
+Placez le fichier du modèle `Claire-7B-0.1.Q4_0.gguf` dans le dossier `models/` avant de lancer l'application.
+
+## Indexation de nouveaux documents
+
+Pour indexer un dossier de documents supplémentaires :
+
+```bash
+python src/ingestion/index_documents.py <chemin_du_dossier>
+```
+
+L'application Streamlit est ensuite accessible sur [http://localhost:8501](http://localhost:8501).
+
