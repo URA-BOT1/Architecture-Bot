@@ -17,7 +17,13 @@ question = st.text_input("Votre demande :")
 if st.button("Envoyer") and question:
     q_vec = embedder.encode([question])[0]
     results = vectorstore.search(q_vec, k=5)
-    context = "\n".join(results.get("documents", [])[0]) if results else ""
-    prompt = PROMPT_DEVIS.format(context=context, question=question)
-    answer = llm(prompt, max_tokens=256, temperature=0.2)
-    st.write("**Réponse du bot :**", answer["choices"][0]["text"])
+
+    # Only build context if search returned documents
+    docs = results.get("documents") if results else None
+    if docs and len(docs) > 0 and docs[0]:
+        context = "\n".join(docs[0])
+        prompt = PROMPT_DEVIS.format(context=context, question=question)
+        answer = llm(prompt, max_tokens=256, temperature=0.2)
+        st.write("**Réponse du bot :**", answer["choices"][0]["text"])
+    else:
+        st.write("Aucun résultat trouvé")
