@@ -120,8 +120,11 @@ Pour indexer vos documents :
 
 ```bash
 python src/ingestion/index_documents.py data/
-bash run.sh
+# ou
+python src/ingestion/index_documents.py data/ --persist-dir my_chroma
 ```
+
+bash run.sh
 
 L'interface Streamlit sera alors accessible localement une fois le
 script `run.sh` lancé.
