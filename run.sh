@@ -1,3 +1,3 @@
 #!/bin/bash
 set -e
-python -m src.chatbot.app
+streamlit run src/chatbot/app.py

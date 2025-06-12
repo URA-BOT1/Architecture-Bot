@@ -120,8 +120,8 @@ Pour indexer vos documents :
 
 ```bash
 python src/ingestion/index_documents.py data/
-bash run.sh
+streamlit run src/chatbot/app.py
 ```
 
-L'interface Streamlit sera alors accessible localement une fois le
-script `run.sh` lancé.
+L'interface Streamlit sera alors accessible localement une fois la
+commande `streamlit run src/chatbot/app.py` exécutée.
