@@ -108,6 +108,9 @@ Pour installer les dépendances système et Python :
 ```bash
 bash install.sh
 ```
+Ce script installe également les paquets système `tesseract-ocr` et
+`poppler-utils` nécessaires à l'OCR utilisé par `pdf2image` et
+`pytesseract`.
 
 Après indexation des documents :
 
