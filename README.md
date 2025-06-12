@@ -35,7 +35,7 @@ pip install -r backend/requirements.txt
   `redis://user:pass@host:port/0`).
 * Le système RAG repose sur la librairie `sentence-transformers`.
   Assurez-vous que cette dépendance est bien installée.
-* Certains modèles de LLM (comme Llama 2 ou Mistral) nécessitent un token
+* Certains modèles de LLM (comme Llama 2 ou Claire‑7B) nécessitent un token
   Hugging Face pour être téléchargés. Renseignez la variable `HF_TOKEN` (lue
   automatiquement par l'application) ou connectez-vous via
   `huggingface-cli login`.

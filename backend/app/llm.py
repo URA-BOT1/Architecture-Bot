@@ -16,17 +16,17 @@ logger = logging.getLogger(__name__)
 
 class LocalLLM:
     """
-    Gestionnaire pour LLM local (Mistral ou Llama)
+    Gestionnaire pour LLM local (Claire-7B ou Llama)
     """
-    
-    def __init__(self, model_name: str = "mistralai/Mistral-7B-Instruct-v0.1"):
+
+    def __init__(self, model_name: str = "OpenLLM-France/Claire-7B-0.1"):
         """
         Initialise le LLM local
         
         Args:
             model_name: Nom du modèle HuggingFace à utiliser
-                       Options: 
-                       - "mistralai/Mistral-7B-Instruct-v0.1" (recommandé)
+                       Options:
+                       - "OpenLLM-France/Claire-7B-0.1" (recommandé)
                        - "meta-llama/Llama-2-7b-chat-hf" (nécessite token HF)
         """
         self.model_name = model_name
@@ -256,7 +256,7 @@ def init_llm(model_name: Optional[str] = None) -> LocalLLM:
     
     # Utiliser variable d'environnement si disponible
     if not model_name:
-        model_name = os.getenv("LLM_MODEL", "mistralai/Mistral-7B-Instruct-v0.1")
+        model_name = os.getenv("LLM_MODEL", "OpenLLM-France/Claire-7B-0.1")
     
     llm_manager = LocalLLM(model_name)
     return llm_manager
