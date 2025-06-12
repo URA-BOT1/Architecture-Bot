@@ -112,16 +112,16 @@ Ce script installe également les paquets système `tesseract-ocr` et
 `poppler-utils` nécessaires à l'OCR utilisé par `pdf2image` et
 `pytesseract`.
 
+Avant de démarrer le chatbot, vos documents doivent impérativement être
+indexés avec le script dédié. Cette étape crée la base ChromaDB utilisée
+par le RAG.
+
 Pour indexer vos documents :
 
 ```bash
 python src/ingestion/index_documents.py data/
-```
-
-Après indexation des documents :
-
-```bash
 bash run.sh
 ```
 
-L'interface Streamlit sera alors accessible localement.
+L'interface Streamlit sera alors accessible localement une fois le
+script `run.sh` lancé.
