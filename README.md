@@ -92,3 +92,27 @@ chmod +x gitflow-setup.sh
 Des exemples détaillés d'utilisation se trouvent dans `gitflow-commands-examples.sh`.
 Ce petit script liste les commandes Git Flow courantes (init, features, releases,
 hotfixes) et montre comment afficher les branches actives.
+
+## Pipeline RAG open-source pour l'architecture
+
+Ce dépôt inclut maintenant une implémentation complète d'un pipeline RAG 100% open-source adapté au français. Les modules situés dans `src/` permettent :
+
+- l'ingestion de documents PDF, DOCX ou Excel via `src/ingestion/` ;
+- la génération d'embeddings CamemBERT dans `src/embeddings/` ;
+- l'indexation et la recherche locale avec ChromaDB (`src/vectorstore/`) ;
+- les prompts de génération dans `src/generation/` ;
+- une interface chatbot Streamlit (`src/chatbot/app.py`) exploitant le modèle quantifié 4-bit **Claire-7B** via `llama_cpp`.
+
+Pour installer les dépendances système et Python :
+
+```bash
+bash install.sh
+```
+
+Après indexation des documents :
+
+```bash
+bash run.sh
+```
+
+L'interface Streamlit sera alors accessible localement.
